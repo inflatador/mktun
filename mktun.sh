@@ -9,8 +9,8 @@ REMOTEHOST="$4"
 set -euo pipefail
 
 if [[ $# -eq 0 ]] ; then
-    printf "%s\n" "usage: mktun LOCALPORT REMOTEIP REMOTEPORT JUMPHOST"
+    printf "%s\n" "usage: mktun LOCALPORT REMOTEIP REMOTEPORT REMOTEHOST"
     exit 1
 fi
 printf "%s\n" "Creating a tunnel on local port ${1}"
-ssh -Cfo ExitOnForwardFailure=yes -NL ${LOCALPORT}:${REMOTEIP}:${REMOTEPORT} ${USER}@${JUMPHOST}
+ssh -Cfo ExitOnForwardFailure=yes -NL ${LOCALPORT}:${REMOTEIP}:${REMOTEPORT} ${USER}@${REMOTEHOST}
